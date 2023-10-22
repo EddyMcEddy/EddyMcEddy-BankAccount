@@ -14,6 +14,7 @@ public class BankService {
     /**
      * A constructor to build a BankService object that will start the bank balance at 0. There is no need to change
      * anything in this constructor.
+     * 
      */
     public BankService(){
         this.balance = 0;
@@ -23,6 +24,14 @@ public class BankService {
      * @param amount the amount to be deposited.
      */
     public void deposit(double amount){
+        if (amount > 0) {
+            this.balance += amount;
+            System.out.println("Deposited" + amount);
+            
+        }else{
+
+            System.out.println("Not a valid deposit: Enter a Positive Deposit");
+        }
 
     }
 
@@ -33,6 +42,18 @@ public class BankService {
      */
     public void withdraw(double amount){
 
+        
+        if (amount > 0) {
+            if (amount <= this.balance) {
+                this.balance -= amount;
+                System.out.println("Withdrawn: " + amount);
+            } else {
+                System.out.println("Insufficient balance. Withdrawal amount exceeds your balance.");
+            }
+        } else {
+            System.out.println("Invalid withdrawal amount. Please enter a positive amount.");
+        }
+
     }
 
     /**
@@ -40,6 +61,6 @@ public class BankService {
      * @return the user's balance.
      */
     public double getBalance(){
-        return 0;
+        return this.balance;    
     }
 }
